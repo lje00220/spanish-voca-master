@@ -75,10 +75,10 @@ export function Quiz({ words }: QuizProps) {
     setIsFinished(false)
   }
 
-  if (!currentWord && !isFinished) {
+  if (words.length < 4 && !isFinished) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
-        <p className="text-muted-foreground">단어가 없습니다.</p>
+        <p className="text-muted-foreground">퀴즈를 시작하려면 단어가 4개 이상 필요합니다.</p>
       </div>
     )
   }
