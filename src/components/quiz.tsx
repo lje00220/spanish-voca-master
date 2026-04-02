@@ -128,7 +128,7 @@ export function Quiz({ words }: QuizProps) {
 
       {/* Choices */}
       <div className="grid grid-cols-2 gap-3">
-        {choices.map((choice) => {
+        {choices.map((choice, index) => {
           const isSelected = selectedChoice === choice
           const isCorrectChoice = choice === currentWord.korean
 
@@ -140,7 +140,7 @@ export function Quiz({ words }: QuizProps) {
 
           return (
             <Button
-              key={choice}
+              key={`${index}-${choice}`}
               variant={variant}
               className={cn(
                 'h-16 text-base font-medium whitespace-normal leading-tight relative',
