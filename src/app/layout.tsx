@@ -5,8 +5,8 @@ import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
-const geistSans = Geist({ subsets: ['latin'] })
-const geistMono = Geist_Mono({ subsets: ['latin'] })
+const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
+const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Da-Voca - 스페인어 단어장',
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: ReactNode
 }>) {
   return (
-    <html lang="ko" className={`${geistSans.className} ${geistMono.className}`} suppressHydrationWarning>
+    <html lang="ko" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
