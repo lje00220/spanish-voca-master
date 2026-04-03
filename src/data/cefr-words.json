@@ -1,0 +1,1649 @@
+[
+  {
+    "id": "1",
+    "spanish": "Hola",
+    "korean": "안녕하세요",
+    "pronunciation": "",
+    "example": "",
+    "category": "인사",
+    "level": "A1"
+  },
+  {
+    "id": "2",
+    "spanish": "Gracias",
+    "korean": "감사합니다",
+    "pronunciation": "",
+    "example": "",
+    "category": "인사",
+    "level": "A1"
+  },
+  {
+    "id": "3",
+    "spanish": "Por favor",
+    "korean": "제발",
+    "pronunciation": "",
+    "example": "",
+    "category": "인사",
+    "level": "A1"
+  },
+  {
+    "id": "4",
+    "spanish": "Buenos días",
+    "korean": "좋은 아침이에요",
+    "pronunciation": "",
+    "example": "",
+    "category": "인사",
+    "level": "A1"
+  },
+  {
+    "id": "5",
+    "spanish": "Buenas tardes",
+    "korean": "좋은 오후에요",
+    "pronunciation": "",
+    "example": "",
+    "category": "인사",
+    "level": "A1"
+  },
+  {
+    "id": "6",
+    "spanish": "Buenas noches",
+    "korean": "안녕히 주무세요",
+    "pronunciation": "",
+    "example": "",
+    "category": "인사",
+    "level": "A1"
+  },
+  {
+    "id": "7",
+    "spanish": "Adiós",
+    "korean": "안녕",
+    "pronunciation": "",
+    "example": "",
+    "category": "인사",
+    "level": "A1"
+  },
+  {
+    "id": "8",
+    "spanish": "Perdón",
+    "korean": "죄송합니다",
+    "pronunciation": "",
+    "example": "",
+    "category": "인사",
+    "level": "A1"
+  },
+  {
+    "id": "9",
+    "spanish": "Ser",
+    "korean": "BE",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "10",
+    "spanish": "Estar",
+    "korean": "BE",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "11",
+    "spanish": "Tener",
+    "korean": "가지다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "12",
+    "spanish": "Hacer",
+    "korean": "하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "13",
+    "spanish": "Ir",
+    "korean": "가다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "14",
+    "spanish": "Poder",
+    "korean": "~할 수 있다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "15",
+    "spanish": "Querer",
+    "korean": "원하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "16",
+    "spanish": "Saber",
+    "korean": "알다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "17",
+    "spanish": "Decir",
+    "korean": "말하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "18",
+    "spanish": "Ver",
+    "korean": "보다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "19",
+    "spanish": "Dar",
+    "korean": "주다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "20",
+    "spanish": "Hablar",
+    "korean": "말하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "21",
+    "spanish": "Comer",
+    "korean": "먹다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "22",
+    "spanish": "Beber",
+    "korean": "마시다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "23",
+    "spanish": "Vivir",
+    "korean": "살다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "24",
+    "spanish": "Dormir",
+    "korean": "잠",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "25",
+    "spanish": "Escribir",
+    "korean": "쓰다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "26",
+    "spanish": "Leer",
+    "korean": "읽다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "27",
+    "spanish": "Escuchar",
+    "korean": "듣다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "28",
+    "spanish": "Comprar",
+    "korean": "구입하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "29",
+    "spanish": "Estudiar",
+    "korean": "공부하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "30",
+    "spanish": "Trabajar",
+    "korean": "일하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "31",
+    "spanish": "Llamar",
+    "korean": "부르다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "32",
+    "spanish": "Salir",
+    "korean": "나가다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "33",
+    "spanish": "Llegar",
+    "korean": "도착하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "34",
+    "spanish": "Pagar",
+    "korean": "지불하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "35",
+    "spanish": "Esperar",
+    "korean": "기다리다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "36",
+    "spanish": "Entender",
+    "korean": "이해하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "37",
+    "spanish": "Necesitar",
+    "korean": "필요",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "38",
+    "spanish": "Gustar",
+    "korean": "좋다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "39",
+    "spanish": "Conocer",
+    "korean": "알다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "40",
+    "spanish": "Venir",
+    "korean": "오다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "41",
+    "spanish": "Creer",
+    "korean": "믿다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "42",
+    "spanish": "Pensar",
+    "korean": "생각하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "43",
+    "spanish": "Sentir",
+    "korean": "느끼다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "44",
+    "spanish": "Pasar",
+    "korean": "통과하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "45",
+    "spanish": "Abrir",
+    "korean": "열려 있는",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "46",
+    "spanish": "Cerrar",
+    "korean": "닫다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "47",
+    "spanish": "Correr",
+    "korean": "달리다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "48",
+    "spanish": "Caminar",
+    "korean": "걷다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "49",
+    "spanish": "Cocinar",
+    "korean": "요리하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "50",
+    "spanish": "Jugar",
+    "korean": "놀다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "51",
+    "spanish": "Cantar",
+    "korean": "노래하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "52",
+    "spanish": "Bailar",
+    "korean": "춤",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "53",
+    "spanish": "Nadar",
+    "korean": "헤엄",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "54",
+    "spanish": "Ayudar",
+    "korean": "돕다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "55",
+    "spanish": "Preguntar",
+    "korean": "묻다",
+    "pronunciation": "",
+    "example": "",
+    "category": "동사",
+    "level": "A1"
+  },
+  {
+    "id": "56",
+    "spanish": "Hombre",
+    "korean": "남성",
+    "pronunciation": "",
+    "example": "",
+    "category": "사람",
+    "level": "A1"
+  },
+  {
+    "id": "57",
+    "spanish": "Mujer",
+    "korean": "여성",
+    "pronunciation": "",
+    "example": "",
+    "category": "사람",
+    "level": "A1"
+  },
+  {
+    "id": "58",
+    "spanish": "Niño",
+    "korean": "어린이",
+    "pronunciation": "",
+    "example": "",
+    "category": "사람",
+    "level": "A1"
+  },
+  {
+    "id": "59",
+    "spanish": "Niña",
+    "korean": "어린 소녀",
+    "pronunciation": "",
+    "example": "",
+    "category": "사람",
+    "level": "A1"
+  },
+  {
+    "id": "60",
+    "spanish": "Amigo",
+    "korean": "친구",
+    "pronunciation": "",
+    "example": "",
+    "category": "사람",
+    "level": "A1"
+  },
+  {
+    "id": "61",
+    "spanish": "Padre",
+    "korean": "아버지",
+    "pronunciation": "",
+    "example": "",
+    "category": "가족",
+    "level": "A1"
+  },
+  {
+    "id": "62",
+    "spanish": "Madre",
+    "korean": "어머니",
+    "pronunciation": "",
+    "example": "",
+    "category": "가족",
+    "level": "A1"
+  },
+  {
+    "id": "63",
+    "spanish": "Hermano",
+    "korean": "형제",
+    "pronunciation": "",
+    "example": "",
+    "category": "가족",
+    "level": "A1"
+  },
+  {
+    "id": "64",
+    "spanish": "Hermana",
+    "korean": "자매",
+    "pronunciation": "",
+    "example": "",
+    "category": "가족",
+    "level": "A1"
+  },
+  {
+    "id": "65",
+    "spanish": "Hijo",
+    "korean": "아들",
+    "pronunciation": "",
+    "example": "",
+    "category": "가족",
+    "level": "A1"
+  },
+  {
+    "id": "66",
+    "spanish": "Hija",
+    "korean": "딸",
+    "pronunciation": "",
+    "example": "",
+    "category": "가족",
+    "level": "A1"
+  },
+  {
+    "id": "67",
+    "spanish": "Familia",
+    "korean": "가족",
+    "pronunciation": "",
+    "example": "",
+    "category": "가족",
+    "level": "A1"
+  },
+  {
+    "id": "68",
+    "spanish": "Casa",
+    "korean": "집",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "69",
+    "spanish": "Ciudad",
+    "korean": "도시",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "70",
+    "spanish": "País",
+    "korean": "국가",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "71",
+    "spanish": "Calle",
+    "korean": "거리",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "72",
+    "spanish": "Escuela",
+    "korean": "학교",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "73",
+    "spanish": "Hospital",
+    "korean": "병원",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "74",
+    "spanish": "Tienda",
+    "korean": "가게",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "75",
+    "spanish": "Restaurante",
+    "korean": "식당",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "76",
+    "spanish": "Parque",
+    "korean": "공원",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "77",
+    "spanish": "Supermercado",
+    "korean": "슈퍼마켓",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "78",
+    "spanish": "Banco",
+    "korean": "은행",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "79",
+    "spanish": "Iglesia",
+    "korean": "교회",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "80",
+    "spanish": "Playa",
+    "korean": "해변",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "81",
+    "spanish": "Hotel",
+    "korean": "호텔",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "82",
+    "spanish": "Aeropuerto",
+    "korean": "공항",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "83",
+    "spanish": "Estación",
+    "korean": "계절",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "84",
+    "spanish": "Oficina",
+    "korean": "사무실",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "85",
+    "spanish": "Baño",
+    "korean": "화장실",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "86",
+    "spanish": "Cocina",
+    "korean": "주방",
+    "pronunciation": "",
+    "example": "",
+    "category": "장소",
+    "level": "A1"
+  },
+  {
+    "id": "87",
+    "spanish": "Agua",
+    "korean": "물",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "88",
+    "spanish": "Comida",
+    "korean": "식사",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "89",
+    "spanish": "Pan",
+    "korean": "빵",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "90",
+    "spanish": "Leche",
+    "korean": "우유",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "91",
+    "spanish": "Café",
+    "korean": "커피",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "92",
+    "spanish": "Cerveza",
+    "korean": "맥주",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "93",
+    "spanish": "Carne",
+    "korean": "고기",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "94",
+    "spanish": "Pollo",
+    "korean": "닭",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "95",
+    "spanish": "Pescado",
+    "korean": "물고기",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "96",
+    "spanish": "Fruta",
+    "korean": "과일",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "97",
+    "spanish": "Verdura",
+    "korean": "채소",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "98",
+    "spanish": "Arroz",
+    "korean": "쌀",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "99",
+    "spanish": "Huevo",
+    "korean": "계란",
+    "pronunciation": "",
+    "example": "",
+    "category": "음식",
+    "level": "A1"
+  },
+  {
+    "id": "100",
+    "spanish": "Tiempo",
+    "korean": "시간",
+    "pronunciation": "",
+    "example": "",
+    "category": "시간",
+    "level": "A1"
+  },
+  {
+    "id": "101",
+    "spanish": "Día",
+    "korean": "낮",
+    "pronunciation": "",
+    "example": "",
+    "category": "시간",
+    "level": "A1"
+  },
+  {
+    "id": "102",
+    "spanish": "Noche",
+    "korean": "저녁",
+    "pronunciation": "",
+    "example": "",
+    "category": "시간",
+    "level": "A1"
+  },
+  {
+    "id": "103",
+    "spanish": "Mañana",
+    "korean": "내일",
+    "pronunciation": "",
+    "example": "",
+    "category": "시간",
+    "level": "A1"
+  },
+  {
+    "id": "104",
+    "spanish": "Tarde",
+    "korean": "늦은",
+    "pronunciation": "",
+    "example": "",
+    "category": "시간",
+    "level": "A1"
+  },
+  {
+    "id": "105",
+    "spanish": "Hora",
+    "korean": "시간",
+    "pronunciation": "",
+    "example": "",
+    "category": "시간",
+    "level": "A1"
+  },
+  {
+    "id": "106",
+    "spanish": "Minuto",
+    "korean": "분",
+    "pronunciation": "",
+    "example": "",
+    "category": "시간",
+    "level": "A1"
+  },
+  {
+    "id": "107",
+    "spanish": "Semana",
+    "korean": "주",
+    "pronunciation": "",
+    "example": "",
+    "category": "시간",
+    "level": "A1"
+  },
+  {
+    "id": "108",
+    "spanish": "Mes",
+    "korean": "월",
+    "pronunciation": "",
+    "example": "",
+    "category": "시간",
+    "level": "A1"
+  },
+  {
+    "id": "109",
+    "spanish": "Año",
+    "korean": "년도",
+    "pronunciation": "",
+    "example": "",
+    "category": "시간",
+    "level": "A1"
+  },
+  {
+    "id": "110",
+    "spanish": "Lunes",
+    "korean": "월요일",
+    "pronunciation": "",
+    "example": "",
+    "category": "요일",
+    "level": "A1"
+  },
+  {
+    "id": "111",
+    "spanish": "Martes",
+    "korean": "화요일",
+    "pronunciation": "",
+    "example": "",
+    "category": "요일",
+    "level": "A1"
+  },
+  {
+    "id": "112",
+    "spanish": "Miércoles",
+    "korean": "수요일",
+    "pronunciation": "",
+    "example": "",
+    "category": "요일",
+    "level": "A1"
+  },
+  {
+    "id": "113",
+    "spanish": "Jueves",
+    "korean": "목요일",
+    "pronunciation": "",
+    "example": "",
+    "category": "요일",
+    "level": "A1"
+  },
+  {
+    "id": "114",
+    "spanish": "Viernes",
+    "korean": "금요일",
+    "pronunciation": "",
+    "example": "",
+    "category": "요일",
+    "level": "A1"
+  },
+  {
+    "id": "115",
+    "spanish": "Sábado",
+    "korean": "토요일",
+    "pronunciation": "",
+    "example": "",
+    "category": "요일",
+    "level": "A1"
+  },
+  {
+    "id": "116",
+    "spanish": "Domingo",
+    "korean": "일요일",
+    "pronunciation": "",
+    "example": "",
+    "category": "요일",
+    "level": "A1"
+  },
+  {
+    "id": "117",
+    "spanish": "Libro",
+    "korean": "책",
+    "pronunciation": "",
+    "example": "",
+    "category": "물건",
+    "level": "A1"
+  },
+  {
+    "id": "118",
+    "spanish": "Teléfono",
+    "korean": "핸드폰",
+    "pronunciation": "",
+    "example": "",
+    "category": "물건",
+    "level": "A1"
+  },
+  {
+    "id": "119",
+    "spanish": "Mesa",
+    "korean": "테이블",
+    "pronunciation": "",
+    "example": "",
+    "category": "물건",
+    "level": "A1"
+  },
+  {
+    "id": "120",
+    "spanish": "Silla",
+    "korean": "의자",
+    "pronunciation": "",
+    "example": "",
+    "category": "물건",
+    "level": "A1"
+  },
+  {
+    "id": "121",
+    "spanish": "Puerta",
+    "korean": "문",
+    "pronunciation": "",
+    "example": "",
+    "category": "물건",
+    "level": "A1"
+  },
+  {
+    "id": "122",
+    "spanish": "Ventana",
+    "korean": "창문",
+    "pronunciation": "",
+    "example": "",
+    "category": "물건",
+    "level": "A1"
+  },
+  {
+    "id": "123",
+    "spanish": "Ropa",
+    "korean": "옷",
+    "pronunciation": "",
+    "example": "",
+    "category": "물건",
+    "level": "A1"
+  },
+  {
+    "id": "124",
+    "spanish": "Zapato",
+    "korean": "구두",
+    "pronunciation": "",
+    "example": "",
+    "category": "물건",
+    "level": "A1"
+  },
+  {
+    "id": "125",
+    "spanish": "Cama",
+    "korean": "침대",
+    "pronunciation": "",
+    "example": "",
+    "category": "물건",
+    "level": "A1"
+  },
+  {
+    "id": "126",
+    "spanish": "Coche",
+    "korean": "자동차",
+    "pronunciation": "",
+    "example": "",
+    "category": "교통",
+    "level": "A1"
+  },
+  {
+    "id": "127",
+    "spanish": "Dinero",
+    "korean": "돈",
+    "pronunciation": "",
+    "example": "",
+    "category": "일상",
+    "level": "A1"
+  },
+  {
+    "id": "128",
+    "spanish": "Trabajo",
+    "korean": "직업",
+    "pronunciation": "",
+    "example": "",
+    "category": "일상",
+    "level": "A1"
+  },
+  {
+    "id": "129",
+    "spanish": "Vida",
+    "korean": "삶",
+    "pronunciation": "",
+    "example": "",
+    "category": "일상",
+    "level": "A1"
+  },
+  {
+    "id": "130",
+    "spanish": "Nombre",
+    "korean": "이름",
+    "pronunciation": "",
+    "example": "",
+    "category": "일상",
+    "level": "A1"
+  },
+  {
+    "id": "131",
+    "spanish": "Cosa",
+    "korean": "물건",
+    "pronunciation": "",
+    "example": "",
+    "category": "일상",
+    "level": "A1"
+  },
+  {
+    "id": "132",
+    "spanish": "Lugar",
+    "korean": "장소",
+    "pronunciation": "",
+    "example": "",
+    "category": "일상",
+    "level": "A1"
+  },
+  {
+    "id": "133",
+    "spanish": "Mundo",
+    "korean": "세계",
+    "pronunciation": "",
+    "example": "",
+    "category": "일상",
+    "level": "A1"
+  },
+  {
+    "id": "134",
+    "spanish": "Problema",
+    "korean": "문제",
+    "pronunciation": "",
+    "example": "",
+    "category": "일상",
+    "level": "A1"
+  },
+  {
+    "id": "135",
+    "spanish": "Idea",
+    "korean": "아이디어",
+    "pronunciation": "",
+    "example": "",
+    "category": "일상",
+    "level": "A1"
+  },
+  {
+    "id": "136",
+    "spanish": "Amor",
+    "korean": "사랑",
+    "pronunciation": "",
+    "example": "",
+    "category": "감정",
+    "level": "A1"
+  },
+  {
+    "id": "137",
+    "spanish": "Médico",
+    "korean": "의사",
+    "pronunciation": "",
+    "example": "",
+    "category": "직업",
+    "level": "A1"
+  },
+  {
+    "id": "138",
+    "spanish": "Profesor",
+    "korean": "선생님",
+    "pronunciation": "",
+    "example": "",
+    "category": "직업",
+    "level": "A1"
+  },
+  {
+    "id": "139",
+    "spanish": "Estudiante",
+    "korean": "학생",
+    "pronunciation": "",
+    "example": "",
+    "category": "직업",
+    "level": "A1"
+  },
+  {
+    "id": "140",
+    "spanish": "Perro",
+    "korean": "개",
+    "pronunciation": "",
+    "example": "",
+    "category": "동물",
+    "level": "A1"
+  },
+  {
+    "id": "141",
+    "spanish": "Gato",
+    "korean": "고양이",
+    "pronunciation": "",
+    "example": "",
+    "category": "동물",
+    "level": "A1"
+  },
+  {
+    "id": "142",
+    "spanish": "Cabeza",
+    "korean": "머리",
+    "pronunciation": "",
+    "example": "",
+    "category": "신체",
+    "level": "A1"
+  },
+  {
+    "id": "143",
+    "spanish": "Mano",
+    "korean": "손",
+    "pronunciation": "",
+    "example": "",
+    "category": "신체",
+    "level": "A1"
+  },
+  {
+    "id": "144",
+    "spanish": "Ojo",
+    "korean": "눈",
+    "pronunciation": "",
+    "example": "",
+    "category": "신체",
+    "level": "A1"
+  },
+  {
+    "id": "145",
+    "spanish": "Boca",
+    "korean": "입",
+    "pronunciation": "",
+    "example": "",
+    "category": "신체",
+    "level": "A1"
+  },
+  {
+    "id": "146",
+    "spanish": "Pie",
+    "korean": "발",
+    "pronunciation": "",
+    "example": "",
+    "category": "신체",
+    "level": "A1"
+  },
+  {
+    "id": "147",
+    "spanish": "Corazón",
+    "korean": "마음",
+    "pronunciation": "",
+    "example": "",
+    "category": "신체",
+    "level": "A1"
+  },
+  {
+    "id": "148",
+    "spanish": "Uno",
+    "korean": "하나",
+    "pronunciation": "",
+    "example": "",
+    "category": "숫자",
+    "level": "A1"
+  },
+  {
+    "id": "149",
+    "spanish": "Dos",
+    "korean": "둘",
+    "pronunciation": "",
+    "example": "",
+    "category": "숫자",
+    "level": "A1"
+  },
+  {
+    "id": "150",
+    "spanish": "Tres",
+    "korean": "삼",
+    "pronunciation": "",
+    "example": "",
+    "category": "숫자",
+    "level": "A1"
+  },
+  {
+    "id": "151",
+    "spanish": "Cuatro",
+    "korean": "네",
+    "pronunciation": "",
+    "example": "",
+    "category": "숫자",
+    "level": "A1"
+  },
+  {
+    "id": "152",
+    "spanish": "Cinco",
+    "korean": "다섯",
+    "pronunciation": "",
+    "example": "",
+    "category": "숫자",
+    "level": "A1"
+  },
+  {
+    "id": "153",
+    "spanish": "Seis",
+    "korean": "육",
+    "pronunciation": "",
+    "example": "",
+    "category": "숫자",
+    "level": "A1"
+  },
+  {
+    "id": "154",
+    "spanish": "Siete",
+    "korean": "일곱",
+    "pronunciation": "",
+    "example": "",
+    "category": "숫자",
+    "level": "A1"
+  },
+  {
+    "id": "155",
+    "spanish": "Ocho",
+    "korean": "여덟",
+    "pronunciation": "",
+    "example": "",
+    "category": "숫자",
+    "level": "A1"
+  },
+  {
+    "id": "156",
+    "spanish": "Nueve",
+    "korean": "아홉",
+    "pronunciation": "",
+    "example": "",
+    "category": "숫자",
+    "level": "A1"
+  },
+  {
+    "id": "157",
+    "spanish": "Diez",
+    "korean": "열",
+    "pronunciation": "",
+    "example": "",
+    "category": "숫자",
+    "level": "A1"
+  },
+  {
+    "id": "158",
+    "spanish": "Cien",
+    "korean": "백",
+    "pronunciation": "",
+    "example": "",
+    "category": "숫자",
+    "level": "A1"
+  },
+  {
+    "id": "159",
+    "spanish": "Bueno",
+    "korean": "잘",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "160",
+    "spanish": "Malo",
+    "korean": "나쁜",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "161",
+    "spanish": "Grande",
+    "korean": "큰",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "162",
+    "spanish": "Pequeño",
+    "korean": "작은",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "163",
+    "spanish": "Nuevo",
+    "korean": "새로운",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "164",
+    "spanish": "Viejo",
+    "korean": "오래된",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "165",
+    "spanish": "Bonito",
+    "korean": "예쁜",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "166",
+    "spanish": "Feo",
+    "korean": "못생긴",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "167",
+    "spanish": "Caliente",
+    "korean": "더운",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "168",
+    "spanish": "Frío",
+    "korean": "추운",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "169",
+    "spanish": "Rápido",
+    "korean": "빠른",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "170",
+    "spanish": "Lento",
+    "korean": "느린",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "171",
+    "spanish": "Fácil",
+    "korean": "쉬운",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "172",
+    "spanish": "Difícil",
+    "korean": "어려운",
+    "pronunciation": "",
+    "example": "",
+    "category": "형용사",
+    "level": "A1"
+  },
+  {
+    "id": "173",
+    "spanish": "Feliz",
+    "korean": "행복하다",
+    "pronunciation": "",
+    "example": "",
+    "category": "감정",
+    "level": "A1"
+  },
+  {
+    "id": "174",
+    "spanish": "Triste",
+    "korean": "슬픈",
+    "pronunciation": "",
+    "example": "",
+    "category": "감정",
+    "level": "A1"
+  },
+  {
+    "id": "175",
+    "spanish": "Cansado",
+    "korean": "피곤한",
+    "pronunciation": "",
+    "example": "",
+    "category": "감정",
+    "level": "A1"
+  },
+  {
+    "id": "176",
+    "spanish": "Enfermo",
+    "korean": "아픈",
+    "pronunciation": "",
+    "example": "",
+    "category": "감정",
+    "level": "A1"
+  },
+  {
+    "id": "177",
+    "spanish": "Contento",
+    "korean": "기쁜",
+    "pronunciation": "",
+    "example": "",
+    "category": "감정",
+    "level": "A1"
+  },
+  {
+    "id": "178",
+    "spanish": "Rojo",
+    "korean": "빨간색",
+    "pronunciation": "",
+    "example": "",
+    "category": "색깔",
+    "level": "A1"
+  },
+  {
+    "id": "179",
+    "spanish": "Azul",
+    "korean": "파란색",
+    "pronunciation": "",
+    "example": "",
+    "category": "색깔",
+    "level": "A1"
+  },
+  {
+    "id": "180",
+    "spanish": "Verde",
+    "korean": "녹색",
+    "pronunciation": "",
+    "example": "",
+    "category": "색깔",
+    "level": "A1"
+  },
+  {
+    "id": "181",
+    "spanish": "Blanco",
+    "korean": "하얀색",
+    "pronunciation": "",
+    "example": "",
+    "category": "색깔",
+    "level": "A1"
+  },
+  {
+    "id": "182",
+    "spanish": "Negro",
+    "korean": "검은색",
+    "pronunciation": "",
+    "example": "",
+    "category": "색깔",
+    "level": "A1"
+  },
+  {
+    "id": "183",
+    "spanish": "Amarillo",
+    "korean": "노란색",
+    "pronunciation": "",
+    "example": "",
+    "category": "색깔",
+    "level": "A1"
+  }
+]
