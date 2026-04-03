@@ -8,4 +8,5 @@ export interface Word {
   example: string
   category: string
   level: CEFRLevel
+  setIndex?: number
 }

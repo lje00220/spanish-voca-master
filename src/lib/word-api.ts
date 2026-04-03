@@ -134,6 +134,7 @@ export async function fetchSet(
         example: '',
         category: '',
         level,
+        setIndex,
       })
     } catch {
       results.push({
@@ -144,6 +145,7 @@ export async function fetchSet(
         example: '',
         category: '',
         level,
+        setIndex,
       })
     }
 
