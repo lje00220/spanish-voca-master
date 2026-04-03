@@ -19,18 +19,34 @@ import { fetchSet, getSetCount, getEstimatedWordCount } from '@/lib/word-api'
 import { cn } from '@/lib/utils'
 
 const LEVELS: { level: CEFRLevel; label: string; bg: string; text: string }[] = [
-  { level: 'A1', label: '입문', bg: 'bg-emerald-50 dark:bg-emerald-950', text: 'text-emerald-700 dark:text-emerald-300' },
-  { level: 'A2', label: '초급', bg: 'bg-sky-50 dark:bg-sky-950', text: 'text-sky-700 dark:text-sky-300' },
-  { level: 'B1', label: '중급', bg: 'bg-violet-50 dark:bg-violet-950', text: 'text-violet-700 dark:text-violet-300' },
-  { level: 'B2', label: '중상급', bg: 'bg-rose-50 dark:bg-rose-950', text: 'text-rose-700 dark:text-rose-300' },
+  {
+    level: 'A1',
+    label: '입문',
+    bg: 'bg-emerald-50 dark:bg-emerald-950',
+    text: 'text-emerald-700 dark:text-emerald-300',
+  },
+  {
+    level: 'A2',
+    label: '초급',
+    bg: 'bg-sky-50 dark:bg-sky-950',
+    text: 'text-sky-700 dark:text-sky-300',
+  },
+  {
+    level: 'B1',
+    label: '중급',
+    bg: 'bg-violet-50 dark:bg-violet-950',
+    text: 'text-violet-700 dark:text-violet-300',
+  },
+  {
+    level: 'B2',
+    label: '중상급',
+    bg: 'bg-rose-50 dark:bg-rose-950',
+    text: 'text-rose-700 dark:text-rose-300',
+  },
 ]
 
 // 레벨 선택 화면
-function LevelSelect({
-  onSelect,
-}: {
-  onSelect: (level: CEFRLevel) => void
-}) {
+function LevelSelect({ onSelect }: { onSelect: (level: CEFRLevel) => void }) {
   const { getWordsByLevel } = useVocabularyStore()
 
   return (
@@ -52,11 +68,15 @@ function LevelSelect({
                 : 'bg-muted/40 hover:bg-muted/60 hover:scale-[1.02]',
             )}
           >
-            <span className={cn('text-2xl font-extrabold', hasWords ? text : 'text-muted-foreground')}>
+            <span
+              className={cn('text-2xl font-extrabold', hasWords ? text : 'text-muted-foreground')}
+            >
               {level}
             </span>
             <div className="flex-1 text-left">
-              <p className={cn('font-semibold', hasWords ? text : 'text-muted-foreground')}>{label}</p>
+              <p className={cn('font-semibold', hasWords ? text : 'text-muted-foreground')}>
+                {label}
+              </p>
               <p className="text-sm text-muted-foreground">
                 {hasWords ? `${wordCount}개 단어` : `~${estimatedCount}개 불러오기 가능`}
               </p>
@@ -133,9 +153,7 @@ function SetSelect({
                     : 'bg-muted/30 hover:bg-muted/50 hover:scale-[1.01]',
                 )}
               >
-                <span className="text-lg font-bold text-primary w-8">
-                  {i + 1}
-                </span>
+                <span className="text-lg font-bold text-primary w-8">{i + 1}</span>
                 <div className="flex-1 text-left">
                   <p className="text-sm font-medium">
                     {startNum}번 ~ {endNum}번
@@ -182,6 +200,7 @@ function SetLoader({
       onComplete(words)
     } catch {
       setError('단어를 불러오는 데 실패했습니다. 다시 시도해주세요.')
+    } finally {
       setLoading(false)
     }
   }
@@ -189,7 +208,7 @@ function SetLoader({
   // 자동 시작
   useEffect(() => {
     handleLoad()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -198,7 +217,9 @@ function SetLoader({
         <Button variant="ghost" size="icon" className="h-8 w-8" onClick={onBack} disabled={loading}>
           <ArrowLeft className="h-4 w-4" />
         </Button>
-        <h2 className="text-lg font-bold">{level} · 세트 {setIndex + 1}</h2>
+        <h2 className="text-lg font-bold">
+          {level} · 세트 {setIndex + 1}
+        </h2>
       </div>
 
       {loading ? (
@@ -211,9 +232,7 @@ function SetLoader({
             <div
               className="bg-primary h-2 rounded-full transition-all"
               style={{
-                width: progress.total > 0
-                  ? `${(progress.current / progress.total) * 100}%`
-                  : '0%',
+                width: progress.total > 0 ? `${(progress.current / progress.total) * 100}%` : '0%',
               }}
             />
           </div>
@@ -337,9 +356,7 @@ function FlashcardStudy({
                 <Heart
                   className={cn(
                     'h-5 w-5 transition-colors',
-                    isSaved(currentWord.id)
-                      ? 'fill-primary text-primary'
-                      : 'text-muted-foreground',
+                    isSaved(currentWord.id) ? 'fill-primary text-primary' : 'text-muted-foreground',
                   )}
                 />
               </Button>
