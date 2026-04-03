@@ -3,16 +3,130 @@
 import { useState } from 'react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Heart, Volume2, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react'
-import { Word } from '@/lib/words'
+import {
+  Heart,
+  Volume2,
+  ChevronLeft,
+  ChevronRight,
+  RotateCcw,
+  ArrowLeft,
+  Lock,
+} from 'lucide-react'
+import { Word, CEFRLevel } from '@/lib/words'
 import { useVocabularyStore } from '@/lib/vocabulary-store'
 import { cn } from '@/lib/utils'
 
-interface FlashcardProps {
-  words: Word[]
+const LEVELS: { level: CEFRLevel; label: string; bg: string; text: string }[] = [
+  { level: 'A1', label: '입문', bg: 'bg-emerald-50 dark:bg-emerald-950', text: 'text-emerald-700 dark:text-emerald-300' },
+  { level: 'A2', label: '초급', bg: 'bg-sky-50 dark:bg-sky-950', text: 'text-sky-700 dark:text-sky-300' },
+  { level: 'B1', label: '중급', bg: 'bg-violet-50 dark:bg-violet-950', text: 'text-violet-700 dark:text-violet-300' },
+  { level: 'B2', label: '중상급', bg: 'bg-rose-50 dark:bg-rose-950', text: 'text-rose-700 dark:text-rose-300' },
+]
+
+// 레벨 선택 화면
+function LevelSelect({
+  onSelect,
+}: {
+  onSelect: (level: CEFRLevel) => void
+}) {
+  const { getWordsByLevel } = useVocabularyStore()
+
+  return (
+    <div className="flex flex-col gap-4 w-full">
+      <h2 className="text-lg font-bold text-center mb-2">레벨을 선택하세요</h2>
+      {LEVELS.map(({ level, label, bg, text }) => {
+        const wordCount = getWordsByLevel(level).length
+        const hasWords = wordCount > 0
+
+        return (
+          <button
+            key={level}
+            onClick={() => hasWords && onSelect(level)}
+            className={cn(
+              'flex items-center gap-4 p-5 rounded-2xl transition-all',
+              hasWords
+                ? cn(bg, 'hover:scale-[1.02] hover:shadow-md cursor-pointer')
+                : 'bg-muted/40 opacity-50 cursor-not-allowed',
+            )}
+          >
+            <span className={cn('text-2xl font-extrabold', hasWords ? text : 'text-muted-foreground')}>
+              {level}
+            </span>
+            <div className="flex-1 text-left">
+              <p className={cn('font-semibold', hasWords ? text : 'text-muted-foreground')}>{label}</p>
+              <p className="text-sm text-muted-foreground">
+                {hasWords ? `${wordCount}개 단어` : '단어 없음'}
+              </p>
+            </div>
+            {!hasWords && <Lock className="h-4 w-4 text-muted-foreground" />}
+          </button>
+        )
+      })}
+    </div>
+  )
 }
 
-export function Flashcard({ words }: FlashcardProps) {
+// 세트 선택 화면
+function SetSelect({
+  level,
+  onSelect,
+  onBack,
+}: {
+  level: CEFRLevel
+  onSelect: (setIndex: number) => void
+  onBack: () => void
+}) {
+  const { getSetCount, getSetWords } = useVocabularyStore()
+  const setCount = getSetCount(level)
+
+  return (
+    <div className="flex flex-col gap-4 w-full">
+      <div className="flex items-center gap-2 mb-2">
+        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={onBack}>
+          <ArrowLeft className="h-4 w-4" />
+        </Button>
+        <h2 className="text-lg font-bold">{level} 세트 선택</h2>
+      </div>
+      <div className="flex flex-col gap-3">
+        {Array.from({ length: setCount }, (_, i) => {
+          const setWords = getSetWords(level, i)
+          const startNum = i * 20 + 1
+          const endNum = startNum + setWords.length - 1
+          return (
+            <button
+              key={i}
+              onClick={() => onSelect(i)}
+              className="flex items-center gap-4 p-4 rounded-2xl bg-muted/50 hover:bg-muted hover:scale-[1.01] transition-all cursor-pointer"
+            >
+              <span className="text-lg font-bold text-primary w-8">
+                {i + 1}
+              </span>
+              <div className="flex-1 text-left">
+                <p className="text-sm font-medium">
+                  {startNum}번 ~ {endNum}번
+                </p>
+              </div>
+              <span className="text-xs text-muted-foreground">{setWords.length}개</span>
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+// 플래시카드 학습 화면
+function FlashcardStudy({
+  words,
+  onBack,
+  level,
+  setIndex,
+}: {
+  words: Word[]
+  onBack: () => void
+  level: CEFRLevel
+  setIndex: number
+}) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
   const { toggleSaved, isSaved } = useVocabularyStore()
@@ -52,6 +166,17 @@ export function Flashcard({ words }: FlashcardProps) {
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-md mx-auto">
+      {/* Header */}
+      <div className="flex items-center justify-between w-full">
+        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={onBack}>
+          <ArrowLeft className="h-4 w-4" />
+        </Button>
+        <span className="text-sm text-muted-foreground">
+          {level} · 세트 {setIndex + 1}
+        </span>
+        <div className="w-8" />
+      </div>
+
       {/* Progress */}
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
         <span className="font-medium text-foreground">{currentIndex + 1}</span>
@@ -119,10 +244,12 @@ export function Flashcard({ words }: FlashcardProps) {
               {currentWord.korean}
             </h2>
             <p className="text-lg opacity-90 mb-6">{currentWord.pronunciation}</p>
-            <div className="bg-white/20 rounded-xl p-4 w-full">
-              <p className="text-sm font-medium mb-1">예문</p>
-              <p className="text-base">{currentWord.example}</p>
-            </div>
+            {currentWord.example && (
+              <div className="bg-white/20 rounded-xl p-4 w-full">
+                <p className="text-sm font-medium mb-1">예문</p>
+                <p className="text-base">{currentWord.example}</p>
+              </div>
+            )}
             <p className="absolute bottom-6 text-sm opacity-70">탭하여 뒤집기</p>
           </Card>
         </div>
@@ -160,4 +287,37 @@ export function Flashcard({ words }: FlashcardProps) {
       </div>
     </div>
   )
+}
+
+// 메인 플래시카드 컴포넌트
+export function Flashcard() {
+  const { currentLevel, currentSet, setCurrentLevel, setCurrentSet, getSetWords } =
+    useVocabularyStore()
+
+  // 세트 학습 중
+  if (currentLevel && currentSet !== null) {
+    const words = getSetWords(currentLevel, currentSet)
+    return (
+      <FlashcardStudy
+        words={words}
+        level={currentLevel}
+        setIndex={currentSet}
+        onBack={() => setCurrentSet(null)}
+      />
+    )
+  }
+
+  // 세트 선택
+  if (currentLevel) {
+    return (
+      <SetSelect
+        level={currentLevel}
+        onSelect={(setIndex) => setCurrentSet(setIndex)}
+        onBack={() => setCurrentLevel(null)}
+      />
+    )
+  }
+
+  // 레벨 선택
+  return <LevelSelect onSelect={(level) => setCurrentLevel(level)} />
 }
