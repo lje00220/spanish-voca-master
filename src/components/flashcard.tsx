@@ -104,22 +104,22 @@ function SetSelect({
   const [loading, setLoading] = useState(false)
 
   const localSetCount = store.getSetCount(level)
-  const hasLocalData = store.hasLevel(level)
+  const isStatic = level === 'A1'
 
   // A2~B2: Wiktionary에서 세트 수 가져오기
   useEffect(() => {
-    if (!hasLocalData) {
+    if (!isStatic) {
       setLoading(true)
       getSetCount(level)
         .then(setApiSetCount)
         .finally(() => setLoading(false))
     }
-  }, [level, hasLocalData])
+  }, [level, isStatic])
 
-  const totalSets = hasLocalData ? localSetCount : (apiSetCount ?? 0)
+  const totalSets = isStatic ? localSetCount : (apiSetCount ?? 0)
 
   // 이미 다운로드된 세트 수 계산
-  const downloadedSetCount = hasLocalData ? localSetCount : 0
+  const downloadedSetCount = localSetCount
 
   return (
     <div className="flex flex-col gap-4 w-full">
