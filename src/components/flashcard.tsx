@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import {
@@ -118,9 +118,6 @@ function SetSelect({
 
   const totalSets = isStatic ? localSetCount : (apiSetCount ?? 0)
 
-  // 이미 다운로드된 세트 수 계산
-  const downloadedSetCount = localSetCount
-
   return (
     <div className="flex flex-col gap-4 w-full">
       <div className="flex items-center gap-2 mb-2">
@@ -137,8 +134,8 @@ function SetSelect({
       ) : (
         <div className="flex flex-col gap-3">
           {Array.from({ length: totalSets }, (_, i) => {
-            const isDownloaded = i < downloadedSetCount
-            const setWords = isDownloaded ? store.getSetWords(level, i) : null
+            const setWords = store.getSetWords(level, i)
+            const isDownloaded = setWords.length > 0
             const startNum = i * 20 + 1
             const endNum = startNum + (setWords?.length ?? 20) - 1
 
@@ -188,6 +185,7 @@ function SetLoader({
   const [loading, setLoading] = useState(false)
   const [progress, setProgress] = useState({ current: 0, total: 0 })
   const [error, setError] = useState<string | null>(null)
+  const cancelledRef = useRef(false)
 
   const handleLoad = async () => {
     setLoading(true)
@@ -195,19 +193,19 @@ function SetLoader({
 
     try {
       const words = await fetchSet(level, setIndex, (current, total) => {
-        setProgress({ current, total })
+        if (!cancelledRef.current) setProgress({ current, total })
       })
-      onComplete(words)
+      if (!cancelledRef.current) onComplete(words)
     } catch {
-      setError('단어를 불러오는 데 실패했습니다. 다시 시도해주세요.')
+      if (!cancelledRef.current) setError('단어를 불러오는 데 실패했습니다. 다시 시도해주세요.')
     } finally {
-      setLoading(false)
+      if (!cancelledRef.current) setLoading(false)
     }
   }
 
-  // 자동 시작
   useEffect(() => {
     handleLoad()
+    return () => { cancelledRef.current = true }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
