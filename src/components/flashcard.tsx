@@ -137,7 +137,7 @@ function SetSelect({
             const setWords = store.getSetWords(level, i)
             const isDownloaded = setWords.length > 0
             const startNum = i * 20 + 1
-            const endNum = startNum + (setWords?.length ?? 20) - 1
+            const endNum = startNum + (setWords?.length || 20) - 1
 
             return (
               <button
