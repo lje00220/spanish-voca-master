@@ -62,9 +62,7 @@ export const useVocabularyStore = create<VocabularyState>()(
       },
       addWrongWord: (id) =>
         set((state) => ({
-          wrongWords: state.wrongWords.includes(id)
-            ? state.wrongWords
-            : [...state.wrongWords, id],
+          wrongWords: state.wrongWords.includes(id) ? state.wrongWords : [...state.wrongWords, id],
         })),
       removeWrongWord: (id) =>
         set((state) => ({
@@ -80,6 +78,11 @@ export const useVocabularyStore = create<VocabularyState>()(
       },
       getSetWords: (level, setIndex) => {
         const levelWords = get().words.filter((w) => w.level === level)
+        // setIndex가 있는 단어(API)는 필터링, 없는 단어(A1 정적)는 위치 기반
+        const hasSetIndex = levelWords.some((w) => w.setIndex !== undefined)
+        if (hasSetIndex) {
+          return levelWords.filter((w) => w.setIndex === setIndex)
+        }
         const start = setIndex * SET_SIZE
         return levelWords.slice(start, start + SET_SIZE)
       },
