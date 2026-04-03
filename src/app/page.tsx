@@ -29,7 +29,7 @@ export default function Home() {
 
       {/* Content */}
       <main className="flex-1 max-w-md mx-auto w-full px-4 pt-6 pb-24">
-        {activeTab === 'flashcard' && <Flashcard words={words} />}
+        {activeTab === 'flashcard' && <Flashcard />}
         {activeTab === 'quiz' && <Quiz words={words} />}
         {activeTab === 'saved' && <SavedWords />}
       </main>
