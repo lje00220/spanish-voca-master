@@ -2,7 +2,8 @@
 
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { Word, initialWords } from './words'
+import { Word } from './words'
+import cefrWords from '../data/cefr-words.json'
 
 interface VocabularyState {
   words: Word[]
@@ -22,7 +23,7 @@ interface VocabularyState {
 export const useVocabularyStore = create<VocabularyState>()(
   persist(
     (set, get) => ({
-      words: initialWords,
+      words: cefrWords as Word[],
       savedWords: [],
       wrongWords: [],
       addWord: (word) =>
