@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import {
@@ -10,10 +10,12 @@ import {
   ChevronRight,
   RotateCcw,
   ArrowLeft,
-  Lock,
+  Download,
+  Loader2,
 } from 'lucide-react'
 import { Word, CEFRLevel } from '@/lib/words'
 import { useVocabularyStore } from '@/lib/vocabulary-store'
+import { fetchSet, getSetCount, getEstimatedWordCount } from '@/lib/word-api'
 import { cn } from '@/lib/utils'
 
 const LEVELS: { level: CEFRLevel; label: string; bg: string; text: string }[] = [
@@ -37,16 +39,17 @@ function LevelSelect({
       {LEVELS.map(({ level, label, bg, text }) => {
         const wordCount = getWordsByLevel(level).length
         const hasWords = wordCount > 0
+        const estimatedCount = getEstimatedWordCount(level)
 
         return (
           <button
             key={level}
-            onClick={() => hasWords && onSelect(level)}
+            onClick={() => onSelect(level)}
             className={cn(
-              'flex items-center gap-4 p-5 rounded-2xl transition-all',
+              'flex items-center gap-4 p-5 rounded-2xl transition-all cursor-pointer',
               hasWords
-                ? cn(bg, 'hover:scale-[1.02] hover:shadow-md cursor-pointer')
-                : 'bg-muted/40 opacity-50 cursor-not-allowed',
+                ? cn(bg, 'hover:scale-[1.02] hover:shadow-md')
+                : 'bg-muted/40 hover:bg-muted/60 hover:scale-[1.02]',
             )}
           >
             <span className={cn('text-2xl font-extrabold', hasWords ? text : 'text-muted-foreground')}>
@@ -55,10 +58,10 @@ function LevelSelect({
             <div className="flex-1 text-left">
               <p className={cn('font-semibold', hasWords ? text : 'text-muted-foreground')}>{label}</p>
               <p className="text-sm text-muted-foreground">
-                {hasWords ? `${wordCount}개 단어` : '단어 없음'}
+                {hasWords ? `${wordCount}개 단어` : `~${estimatedCount}개 불러오기 가능`}
               </p>
             </div>
-            {!hasWords && <Lock className="h-4 w-4 text-muted-foreground" />}
+            {!hasWords && <Download className="h-4 w-4 text-muted-foreground" />}
           </button>
         )
       })}
@@ -66,7 +69,7 @@ function LevelSelect({
   )
 }
 
-// 세트 선택 화면
+// 세트 선택 화면 (A1: 로컬 데이터 / A2~B2: 동적 세트)
 function SetSelect({
   level,
   onSelect,
@@ -76,8 +79,27 @@ function SetSelect({
   onSelect: (setIndex: number) => void
   onBack: () => void
 }) {
-  const { getSetCount, getSetWords } = useVocabularyStore()
-  const setCount = getSetCount(level)
+  const store = useVocabularyStore()
+  const [apiSetCount, setApiSetCount] = useState<number | null>(null)
+  const [loading, setLoading] = useState(false)
+
+  const localSetCount = store.getSetCount(level)
+  const hasLocalData = store.hasLevel(level)
+
+  // A2~B2: Wiktionary에서 세트 수 가져오기
+  useEffect(() => {
+    if (!hasLocalData) {
+      setLoading(true)
+      getSetCount(level)
+        .then(setApiSetCount)
+        .finally(() => setLoading(false))
+    }
+  }, [level, hasLocalData])
+
+  const totalSets = hasLocalData ? localSetCount : (apiSetCount ?? 0)
+
+  // 이미 다운로드된 세트 수 계산
+  const downloadedSetCount = hasLocalData ? localSetCount : 0
 
   return (
     <div className="flex flex-col gap-4 w-full">
@@ -87,30 +109,124 @@ function SetSelect({
         </Button>
         <h2 className="text-lg font-bold">{level} 세트 선택</h2>
       </div>
-      <div className="flex flex-col gap-3">
-        {Array.from({ length: setCount }, (_, i) => {
-          const setWords = getSetWords(level, i)
-          const startNum = i * 20 + 1
-          const endNum = startNum + setWords.length - 1
-          return (
-            <button
-              key={i}
-              onClick={() => onSelect(i)}
-              className="flex items-center gap-4 p-4 rounded-2xl bg-muted/50 hover:bg-muted hover:scale-[1.01] transition-all cursor-pointer"
-            >
-              <span className="text-lg font-bold text-primary w-8">
-                {i + 1}
-              </span>
-              <div className="flex-1 text-left">
-                <p className="text-sm font-medium">
-                  {startNum}번 ~ {endNum}번
-                </p>
-              </div>
-              <span className="text-xs text-muted-foreground">{setWords.length}개</span>
-            </button>
-          )
-        })}
+
+      {loading ? (
+        <div className="flex items-center justify-center py-8">
+          <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+        </div>
+      ) : (
+        <div className="flex flex-col gap-3">
+          {Array.from({ length: totalSets }, (_, i) => {
+            const isDownloaded = i < downloadedSetCount
+            const setWords = isDownloaded ? store.getSetWords(level, i) : null
+            const startNum = i * 20 + 1
+            const endNum = startNum + (setWords?.length ?? 20) - 1
+
+            return (
+              <button
+                key={i}
+                onClick={() => onSelect(i)}
+                className={cn(
+                  'flex items-center gap-4 p-4 rounded-2xl transition-all cursor-pointer',
+                  isDownloaded
+                    ? 'bg-muted/50 hover:bg-muted hover:scale-[1.01]'
+                    : 'bg-muted/30 hover:bg-muted/50 hover:scale-[1.01]',
+                )}
+              >
+                <span className="text-lg font-bold text-primary w-8">
+                  {i + 1}
+                </span>
+                <div className="flex-1 text-left">
+                  <p className="text-sm font-medium">
+                    {startNum}번 ~ {endNum}번
+                  </p>
+                </div>
+                {isDownloaded ? (
+                  <span className="text-xs text-muted-foreground">{setWords?.length}개</span>
+                ) : (
+                  <Download className="h-4 w-4 text-muted-foreground" />
+                )}
+              </button>
+            )
+          })}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// 세트 다운로드 화면
+function SetLoader({
+  level,
+  setIndex,
+  onComplete,
+  onBack,
+}: {
+  level: CEFRLevel
+  setIndex: number
+  onComplete: (words: Word[]) => void
+  onBack: () => void
+}) {
+  const [loading, setLoading] = useState(false)
+  const [progress, setProgress] = useState({ current: 0, total: 0 })
+  const [error, setError] = useState<string | null>(null)
+
+  const handleLoad = async () => {
+    setLoading(true)
+    setError(null)
+
+    try {
+      const words = await fetchSet(level, setIndex, (current, total) => {
+        setProgress({ current, total })
+      })
+      onComplete(words)
+    } catch {
+      setError('단어를 불러오는 데 실패했습니다. 다시 시도해주세요.')
+      setLoading(false)
+    }
+  }
+
+  // 자동 시작
+  useEffect(() => {
+    handleLoad()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return (
+    <div className="flex flex-col items-center gap-6 w-full">
+      <div className="flex items-center gap-2 w-full">
+        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={onBack} disabled={loading}>
+          <ArrowLeft className="h-4 w-4" />
+        </Button>
+        <h2 className="text-lg font-bold">{level} · 세트 {setIndex + 1}</h2>
       </div>
+
+      {loading ? (
+        <div className="flex flex-col items-center gap-3 w-full py-8">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <p className="text-sm text-muted-foreground">
+            번역 중... {progress.current}/{progress.total}
+          </p>
+          <div className="w-full bg-muted rounded-full h-2">
+            <div
+              className="bg-primary h-2 rounded-full transition-all"
+              style={{
+                width: progress.total > 0
+                  ? `${(progress.current / progress.total) * 100}%`
+                  : '0%',
+              }}
+            />
+          </div>
+          <p className="text-xs text-muted-foreground">약 10초 소요</p>
+        </div>
+      ) : error ? (
+        <div className="flex flex-col items-center gap-4 py-8">
+          <p className="text-sm text-destructive text-center">{error}</p>
+          <Button onClick={handleLoad} variant="outline">
+            다시 시도
+          </Button>
+        </div>
+      ) : null}
     </div>
   )
 }
@@ -228,9 +344,11 @@ function FlashcardStudy({
                 />
               </Button>
             </div>
-            <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full mb-4">
-              {currentWord.category}
-            </span>
+            {currentWord.category && (
+              <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full mb-4">
+                {currentWord.category}
+              </span>
+            )}
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-2 text-center">
               {currentWord.spanish}
             </h2>
@@ -291,23 +409,39 @@ function FlashcardStudy({
 
 // 메인 플래시카드 컴포넌트
 export function Flashcard() {
-  const { currentLevel, currentSet, setCurrentLevel, setCurrentSet, getSetWords } =
+  const { currentLevel, currentSet, setCurrentLevel, setCurrentSet, getSetWords, addWords } =
     useVocabularyStore()
 
   // 세트 학습 중
   if (currentLevel && currentSet !== null) {
-    const words = getSetWords(currentLevel, currentSet)
+    const localWords = getSetWords(currentLevel, currentSet)
+
+    // 이미 다운로드된 세트 → 바로 학습
+    if (localWords.length > 0) {
+      return (
+        <FlashcardStudy
+          words={localWords}
+          level={currentLevel}
+          setIndex={currentSet}
+          onBack={() => setCurrentSet(null)}
+        />
+      )
+    }
+
+    // 아직 안 받은 세트 → 다운로드 후 학습
     return (
-      <FlashcardStudy
-        words={words}
+      <SetLoader
         level={currentLevel}
         setIndex={currentSet}
         onBack={() => setCurrentSet(null)}
+        onComplete={(words) => {
+          addWords(words)
+        }}
       />
     )
   }
 
-  // 세트 선택
+  // 레벨 선택됨 → 세트 선택
   if (currentLevel) {
     return (
       <SetSelect

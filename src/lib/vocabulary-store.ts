@@ -27,6 +27,8 @@ interface VocabularyState {
   getSetCount: (level: CEFRLevel) => number
   setCurrentLevel: (level: CEFRLevel | null) => void
   setCurrentSet: (set: number | null) => void
+  addWords: (words: Word[]) => void
+  hasLevel: (level: CEFRLevel) => boolean
 }
 
 export const useVocabularyStore = create<VocabularyState>()(
@@ -87,6 +89,11 @@ export const useVocabularyStore = create<VocabularyState>()(
       },
       setCurrentLevel: (level) => set({ currentLevel: level, currentSet: null }),
       setCurrentSet: (setNum) => set({ currentSet: setNum }),
+      addWords: (newWords) =>
+        set((state) => ({
+          words: [...state.words, ...newWords],
+        })),
+      hasLevel: (level) => get().words.some((w) => w.level === level),
     }),
     {
       name: 'vocabulary-storage',
