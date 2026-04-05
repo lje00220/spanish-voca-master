@@ -80,8 +80,13 @@ function QuizPlay({
 
   if (words.length < 4) {
     return (
-      <div className="flex flex-col items-center justify-center py-12">
-        <p className="text-muted-foreground">퀴즈를 시작하려면 단어가 4개 이상 필요합니다.</p>
+      <div className="flex flex-col gap-6 w-full max-w-md mx-auto">
+        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={onBack}>
+          <ArrowLeft className="h-4 w-4" />
+        </Button>
+        <div className="flex flex-col items-center justify-center py-12">
+          <p className="text-muted-foreground">퀴즈를 시작하려면 단어가 4개 이상 필요합니다.</p>
+        </div>
       </div>
     )
   }
