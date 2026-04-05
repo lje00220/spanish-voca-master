@@ -49,6 +49,7 @@ export const useVocabularyStore = create<VocabularyState>()(
       addWord: (word) =>
         set((state) => ({
           words: [...state.words, word],
+          savedWords: [...state.savedWords, word.id],
         })),
       removeWord: (id) =>
         set((state) => ({
