@@ -199,12 +199,12 @@ export function Quiz() {
   const [level, setLevel] = useState<CEFRLevel | null>(null)
   const [setIndex, setSetIndex] = useState<number | null>(null)
   const [screen, setScreen] = useState<QuizScreen>('level')
+  const [quizWords, setQuizWords] = useState<Word[]>([])
 
   if (screen === 'play' && level !== null && setIndex !== null) {
-    const words = getSetWords(level, setIndex)
     return (
       <QuizPlay
-        words={words}
+        words={quizWords}
         level={level}
         setIndex={setIndex}
         onBack={() => {
@@ -226,6 +226,7 @@ export function Quiz() {
         }}
         onComplete={(words) => {
           addWords(words)
+          setQuizWords(words)
           setScreen('play')
         }}
       />
@@ -239,7 +240,12 @@ export function Quiz() {
         onSelect={(idx) => {
           setSetIndex(idx)
           const words = getSetWords(level, idx)
-          setScreen(words.length > 0 ? 'play' : 'load')
+          if (words.length > 0) {
+            setQuizWords(words)
+            setScreen('play')
+          } else {
+            setScreen('load')
+          }
         }}
         onBack={() => {
           setLevel(null)
