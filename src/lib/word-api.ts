@@ -106,6 +106,45 @@ async function translateWord(spanish: string): Promise<string> {
 }
 
 /**
+ * 단일 스페인어 단어 번역 (외부 노출)
+ */
+export async function translateSingleWord(spanish: string): Promise<string> {
+  return translateWord(spanish)
+}
+
+/**
+ * Wiktionary에서 발음(IPA)과 예문 조회
+ */
+export async function fetchWordDetail(
+  spanish: string,
+): Promise<{ pronunciation: string; example: string }> {
+  try {
+    const res = await fetch(
+      `${WIKTIONARY_API}?action=parse&page=${encodeURIComponent(spanish)}&prop=wikitext&format=json&origin=*`,
+    )
+    if (!res.ok) return { pronunciation: '', example: '' }
+
+    const data = await res.json()
+    const wikitext: string = data.parse?.wikitext?.['*'] ?? ''
+
+    // Spanish 섹션만 추출
+    const spanishSection = wikitext.split('==Spanish==')[1]?.split(/\n==[A-Z]/)[0] ?? ''
+
+    // IPA: /.../ 패턴
+    const ipaMatch = spanishSection.match(/\/([^/\n]{2,30})\//)
+    const pronunciation = ipaMatch ? `/${ipaMatch[1]}/` : ''
+
+    // 예문: {{ux|es|TEXT|...}}
+    const exampleMatch = spanishSection.match(/\{\{ux\|es\|([^|}\n]+)/)
+    const example = exampleMatch ? exampleMatch[1].trim() : ''
+
+    return { pronunciation, example }
+  } catch {
+    return { pronunciation: '', example: '' }
+  }
+}
+
+/**
  * 세트 단위(20개)로 단어를 가져와 번역
  */
 export async function fetchSet(
