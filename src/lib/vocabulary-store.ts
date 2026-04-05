@@ -1,9 +1,16 @@
 'use client'
 
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
+import { get as idbGet, set as idbSet, del as idbDel } from 'idb-keyval'
 import { Word, CEFRLevel } from './words'
 import cefrWords from '../data/cefr-words.json'
+
+const idbStorage = createJSONStorage(() => ({
+  getItem: (name: string) => idbGet<string>(name).then((v) => v ?? null),
+  setItem: (name: string, value: string) => idbSet(name, value),
+  removeItem: (name: string) => idbDel(name),
+}))
 
 const SET_SIZE = 20
 
@@ -100,6 +107,17 @@ export const useVocabularyStore = create<VocabularyState>()(
     }),
     {
       name: 'vocabulary-storage',
+      storage: idbStorage,
+      version: 1,
+      migrate: (persistedState, fromVersion) => {
+        if (fromVersion === 0) {
+          const state = persistedState as Partial<VocabularyState>
+          if (state.words) {
+            state.words = state.words.map((w) => ({ ...w, level: w.level ?? ('A1' as CEFRLevel) }))
+          }
+        }
+        return persistedState as VocabularyState
+      },
     },
   ),
 )
