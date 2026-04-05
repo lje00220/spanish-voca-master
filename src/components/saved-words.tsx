@@ -5,10 +5,11 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Heart, BookX, Trash2, Plus } from 'lucide-react'
+import { Heart, BookX, Trash2, Plus, Sparkles, Loader2 } from 'lucide-react'
 import { Word, CEFRLevel } from '@/lib/words'
 import { useVocabularyStore } from '@/lib/vocabulary-store'
 import { AddWordModal } from '@/components/add-word-modal'
+import { fetchWordDetail } from '@/lib/word-api'
 import { cn } from '@/lib/utils'
 
 const LEVEL_BADGE: Record<CEFRLevel, { label: string; className: string }> = {
@@ -31,7 +32,25 @@ function WordList({
   onRemove: (id: string) => void
   emptyMessage: string
 }) {
+  const { updateWord } = useVocabularyStore()
   const [filter, setFilter] = useState<CEFRLevel | 'all'>('all')
+  const [enrichingIds, setEnrichingIds] = useState<Set<string>>(new Set())
+
+  const handleEnrich = async (word: Word) => {
+    setEnrichingIds((prev) => new Set(prev).add(word.id))
+    const detail = await fetchWordDetail(word.spanish)
+    if (detail.pronunciation || detail.example) {
+      updateWord(word.id, {
+        pronunciation: detail.pronunciation || word.pronunciation,
+        example: detail.example || word.example,
+      })
+    }
+    setEnrichingIds((prev) => {
+      const next = new Set(prev)
+      next.delete(word.id)
+      return next
+    })
+  }
 
   const filtered = filter === 'all' ? words : words.filter((w) => w.level === filter)
 
@@ -85,14 +104,30 @@ function WordList({
                 <span className="text-muted-foreground text-sm">{word.korean}</span>
                 <span className="text-muted-foreground text-xs">{word.pronunciation}</span>
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-9 w-9 shrink-0 text-muted-foreground hover:text-destructive"
-                onClick={() => onRemove(word.id)}
-              >
-                <Trash2 className="h-4 w-4" />
-              </Button>
+              <div className="flex gap-1 shrink-0">
+                {(!word.pronunciation || !word.example) && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-9 w-9 text-muted-foreground hover:text-primary"
+                    onClick={() => handleEnrich(word)}
+                    disabled={enrichingIds.has(word.id)}
+                    title="발음/예문 자동 보강"
+                  >
+                    {enrichingIds.has(word.id)
+                      ? <Loader2 className="h-4 w-4 animate-spin" />
+                      : <Sparkles className="h-4 w-4" />}
+                  </Button>
+                )}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-9 w-9 text-muted-foreground hover:text-destructive"
+                  onClick={() => onRemove(word.id)}
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
+              </div>
             </Card>
           )
         })
