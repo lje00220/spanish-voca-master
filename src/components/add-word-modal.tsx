@@ -86,7 +86,7 @@ export function AddWordModal({ open, onClose }: AddWordModalProps) {
                 placeholder="예: hablar"
                 value={spanish}
                 onChange={(e) => setSpanish(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleAutoFill()}
+                onKeyDown={(e) => e.key === 'Enter' && !loading && handleAutoFill()}
               />
               <Button
                 variant="outline"
