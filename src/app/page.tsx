@@ -5,7 +5,6 @@ import { Flashcard } from '@/components/flashcard'
 import { Quiz } from '@/components/quiz'
 import { SavedWords } from '@/components/saved-words'
 import { BottomNav, TabType } from '@/components/bottom-nav'
-import { useVocabularyStore } from '@/lib/vocabulary-store'
 
 const TAB_TITLES: Record<TabType, string> = {
   flashcard: '플래시카드',
@@ -15,8 +14,6 @@ const TAB_TITLES: Record<TabType, string> = {
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabType>('flashcard')
-  const { words } = useVocabularyStore()
-
   return (
     <div className="flex flex-col min-h-screen bg-background">
       {/* Header */}
@@ -30,7 +27,7 @@ export default function Home() {
       {/* Content */}
       <main className="flex-1 max-w-md mx-auto w-full px-4 pt-6 pb-24">
         {activeTab === 'flashcard' && <Flashcard />}
-        {activeTab === 'quiz' && <Quiz words={words} />}
+        {activeTab === 'quiz' && <Quiz />}
         {activeTab === 'saved' && <SavedWords />}
       </main>
 
