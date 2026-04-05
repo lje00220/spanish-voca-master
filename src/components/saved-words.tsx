@@ -38,18 +38,21 @@ function WordList({
 
   const handleEnrich = async (word: Word) => {
     setEnrichingIds((prev) => new Set(prev).add(word.id))
-    const detail = await fetchWordDetail(word.spanish)
-    if (detail.pronunciation || detail.example) {
-      updateWord(word.id, {
-        pronunciation: detail.pronunciation || word.pronunciation,
-        example: detail.example || word.example,
+    try {
+      const detail = await fetchWordDetail(word.spanish)
+      if (detail.pronunciation || detail.example) {
+        updateWord(word.id, {
+          pronunciation: detail.pronunciation || word.pronunciation,
+          example: detail.example || word.example,
+        })
+      }
+    } finally {
+      setEnrichingIds((prev) => {
+        const next = new Set(prev)
+        next.delete(word.id)
+        return next
       })
     }
-    setEnrichingIds((prev) => {
-      const next = new Set(prev)
-      next.delete(word.id)
-      return next
-    })
   }
 
   const filtered = filter === 'all' ? words : words.filter((w) => w.level === filter)
