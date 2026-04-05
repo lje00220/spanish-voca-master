@@ -32,6 +32,7 @@ interface VocabularyState {
   getWordsByLevel: (level: CEFRLevel) => Word[]
   getSetWords: (level: CEFRLevel, setIndex: number) => Word[]
   getSetCount: (level: CEFRLevel) => number
+  updateWord: (id: string, patch: Partial<Pick<Word, 'pronunciation' | 'example' | 'korean' | 'category'>>) => void
   setCurrentLevel: (level: CEFRLevel | null) => void
   setCurrentSet: (set: number | null) => void
   addWords: (words: Word[]) => void
@@ -104,6 +105,10 @@ export const useVocabularyStore = create<VocabularyState>()(
           const unique = newWords.filter((w) => !existingIds.has(w.id))
           return { words: [...state.words, ...unique] }
         }),
+      updateWord: (id, patch) =>
+        set((state) => ({
+          words: state.words.map((w) => (w.id === id ? { ...w, ...patch } : w)),
+        })),
     }),
     {
       name: 'vocabulary-storage',

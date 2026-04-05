@@ -5,9 +5,10 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Heart, BookX, Trash2 } from 'lucide-react'
+import { Heart, BookX, Trash2, Plus } from 'lucide-react'
 import { Word, CEFRLevel } from '@/lib/words'
 import { useVocabularyStore } from '@/lib/vocabulary-store'
+import { AddWordModal } from '@/components/add-word-modal'
 import { cn } from '@/lib/utils'
 
 const LEVEL_BADGE: Record<CEFRLevel, { label: string; className: string }> = {
@@ -103,14 +104,18 @@ function WordList({
 export function SavedWords() {
   const { getSavedWords, getWrongWords, toggleSaved, removeWrongWord, clearWrongWords } =
     useVocabularyStore()
+  const [modalOpen, setModalOpen] = useState(false)
 
   const savedWords = getSavedWords()
   const wrongWords = getWrongWords()
 
   return (
     <div className="w-full max-w-md mx-auto">
+      <AddWordModal open={modalOpen} onClose={() => setModalOpen(false)} />
       <Tabs defaultValue="saved">
-        <TabsList className="w-full mb-4">
+        <div className="flex items-center justify-between mb-4">
+          <TabsList className="flex-1">
+
           <TabsTrigger value="saved" className="flex-1 gap-2">
             <Heart className="h-4 w-4" />
             북마크
@@ -129,7 +134,16 @@ export function SavedWords() {
               </Badge>
             )}
           </TabsTrigger>
-        </TabsList>
+          </TabsList>
+          <Button
+            size="icon"
+            variant="ghost"
+            className="h-9 w-9 ml-2 shrink-0"
+            onClick={() => setModalOpen(true)}
+          >
+            <Plus className="h-4 w-4" />
+          </Button>
+        </div>
 
         <TabsContent value="saved">
           <WordList
