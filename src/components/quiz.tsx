@@ -4,15 +4,13 @@ import { useState, useMemo } from 'react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { CheckCircle2, XCircle, RotateCcw } from 'lucide-react'
-import { Word } from '@/lib/words'
+import { CheckCircle2, XCircle, RotateCcw, ArrowLeft } from 'lucide-react'
+import { Word, CEFRLevel } from '@/lib/words'
 import { useVocabularyStore } from '@/lib/vocabulary-store'
+import { LevelSelect, SetSelect, SetLoader } from '@/components/level-set-select'
 import { cn } from '@/lib/utils'
 
-interface QuizProps {
-  words: Word[]
-}
-
+type QuizScreen = 'level' | 'set' | 'load' | 'play'
 type AnswerState = 'idle' | 'correct' | 'wrong'
 
 function shuffleArray<T>(arr: T[]): T[] {
@@ -21,13 +19,21 @@ function shuffleArray<T>(arr: T[]): T[] {
 
 function getChoices(words: Word[], correctWord: Word): string[] {
   const others = words.filter((w) => w.id !== correctWord.id)
-  const wrong = shuffleArray(others)
-    .slice(0, 3)
-    .map((w) => w.korean)
+  const wrong = shuffleArray(others).slice(0, 3).map((w) => w.korean)
   return shuffleArray([correctWord.korean, ...wrong])
 }
 
-export function Quiz({ words }: QuizProps) {
+function QuizPlay({
+  words,
+  level,
+  setIndex,
+  onBack,
+}: {
+  words: Word[]
+  level: CEFRLevel
+  setIndex: number
+  onBack: () => void
+}) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [score, setScore] = useState(0)
   const [answerState, setAnswerState] = useState<AnswerState>('idle')
@@ -45,17 +51,14 @@ export function Quiz({ words }: QuizProps) {
 
   const handleSelect = (choice: string) => {
     if (answerState !== 'idle') return
-
     const isCorrect = choice === currentWord.korean
     setSelectedChoice(choice)
     setAnswerState(isCorrect ? 'correct' : 'wrong')
-
     if (isCorrect) {
       setScore((prev) => prev + 1)
     } else {
       addWrongWord(currentWord.id)
     }
-
     setTimeout(() => {
       if (currentIndex + 1 >= words.length) {
         setIsFinished(true)
@@ -75,7 +78,7 @@ export function Quiz({ words }: QuizProps) {
     setIsFinished(false)
   }
 
-  if (words.length < 4 && !isFinished) {
+  if (words.length < 4) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
         <p className="text-muted-foreground">퀴즈를 시작하려면 단어가 4개 이상 필요합니다.</p>
@@ -99,10 +102,16 @@ export function Quiz({ words }: QuizProps) {
             <Badge variant="destructive">{total - score} 오답</Badge>
           </div>
         </Card>
-        <Button className="w-full max-w-xs" onClick={handleRestart}>
-          <RotateCcw className="h-4 w-4 mr-2" />
-          다시 풀기
-        </Button>
+        <div className="flex gap-3 w-full max-w-xs">
+          <Button variant="outline" className="flex-1" onClick={onBack}>
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            세트 선택
+          </Button>
+          <Button className="flex-1" onClick={handleRestart}>
+            <RotateCcw className="h-4 w-4 mr-2" />
+            다시 풀기
+          </Button>
+        </div>
       </div>
     )
   }
@@ -111,7 +120,11 @@ export function Quiz({ words }: QuizProps) {
     <div className="flex flex-col gap-6 w-full max-w-md mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between">
+        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={onBack}>
+          <ArrowLeft className="h-4 w-4" />
+        </Button>
         <span className="text-sm text-muted-foreground">
+          {level} · 세트 {setIndex + 1} &nbsp;
           <span className="font-medium text-foreground">{currentIndex + 1}</span> / {words.length}
         </span>
         <Badge variant="secondary">점수 {score}</Badge>
@@ -174,4 +187,62 @@ export function Quiz({ words }: QuizProps) {
       )}
     </div>
   )
+}
+
+export function Quiz() {
+  const { getSetWords, addWords } = useVocabularyStore()
+  const [level, setLevel] = useState<CEFRLevel | null>(null)
+  const [setIndex, setSetIndex] = useState<number | null>(null)
+  const [screen, setScreen] = useState<QuizScreen>('level')
+
+  if (screen === 'play' && level !== null && setIndex !== null) {
+    const words = getSetWords(level, setIndex)
+    return (
+      <QuizPlay
+        words={words}
+        level={level}
+        setIndex={setIndex}
+        onBack={() => {
+          setScreen('set')
+          setSetIndex(null)
+        }}
+      />
+    )
+  }
+
+  if (screen === 'load' && level !== null && setIndex !== null) {
+    return (
+      <SetLoader
+        level={level}
+        setIndex={setIndex}
+        onBack={() => {
+          setScreen('set')
+          setSetIndex(null)
+        }}
+        onComplete={(words) => {
+          addWords(words)
+          setScreen('play')
+        }}
+      />
+    )
+  }
+
+  if (screen === 'set' && level !== null) {
+    return (
+      <SetSelect
+        level={level}
+        onSelect={(idx) => {
+          setSetIndex(idx)
+          const words = getSetWords(level, idx)
+          setScreen(words.length > 0 ? 'play' : 'load')
+        }}
+        onBack={() => {
+          setLevel(null)
+          setScreen('level')
+        }}
+      />
+    )
+  }
+
+  return <LevelSelect onSelect={(lvl) => { setLevel(lvl); setScreen('set') }} />
 }
